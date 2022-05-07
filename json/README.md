@@ -70,6 +70,8 @@ validate basic.json schema.json
 ```
 
 ## 예제
+*```배열```, ```열거형```, ```객체``` 등 다양한 방법으로 schema를 구성할 수 있다.  
+필요시 찾는 방향으로 하고 본 예제의 설명은 생략한다.*
 ```json
 {
     "speaker": {
