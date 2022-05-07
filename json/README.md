@@ -21,6 +21,8 @@ json에는 특별히 주석이 없다.
 
 [구글코딩가이드](https://google.github.io/styleguide/jsoncstyleguide.xml)
 
+<html src=images/googleJsonsStyleGuide.png>
+
 ## json 설계
 json을 작성할 때 좀더 손쉽게 작성할 수 있는 웹사이트들이 있다.  
 [json editor](https://jsoneditoronline.org/#right=local.terapi&left=local.defidi)  
