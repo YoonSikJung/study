@@ -49,5 +49,81 @@ api를 쉽게 개발하고 관리할 수 있는 툴
 
 
 
+## json schema
+json 문서의 내용, 구조, 형식을 규정하기 위한 것이다.  
+단순하게 문법적 유효성을 검사하는 것이 아니라 의미를 검사할 수 있다.  
+schma를 사용하는 이유는 아래와 같다. 
+- 보안성
+- 메시지 설계: 발신측과 수신측이 완전히 분리되어 있는 메시징 시스템
+- API 설계: 구조를 결정하면서 API의 규약을 정의할 수 있다.
+- 프로토타이핑
 
+## ujs-jsonvalidate
+local에서 json schema를 이용해서 json의 유효성을 검사하는 툴이다.  
+nmp을 통해 설치 가능하다.
+```bash
+npm inatsll -g ujs-jsonvalidate
+```
+사용방법은 아래와 같다. 
+```bash
+validate basic.json schema.json 
+```
 
+## 예제
+```json
+{
+    "speaker": {
+        "email": "yes.chung89@gmail.com",
+        "firstName":"chung",
+        "lastName":"yoon",
+        "postedSlides":true,
+        "rating": 2,
+        "tags":["Java"]
+    }
+}
+```
+```json
+{
+    "$schema": "http://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "properties": {
+        "speaker": {
+            "type": "object",
+            "properties" :{
+                "email": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "postedSlides": {
+                    "type": "boolean"
+                },
+                "rating": {
+                    "type": "number",
+                    "minimum":0.0,
+                    "maximum":5.0
+                },
+                "tags": {
+                    "type": "array",
+                    "minItems":1,
+                    "maxItems":4,
+                    "items": {
+                        "enum": [
+                            "Open Source", "Java", "JSON"
+                        ]
+                    }
+                }
+            },
+            "required": [ "email", "firstName", "lastName", "postedSlides", 
+                "rating", "tags" ],
+            "additionalProperties": false
+        }
+    },
+    "required" :["speaker"],
+    "additionalProperties": false
+}
+```
